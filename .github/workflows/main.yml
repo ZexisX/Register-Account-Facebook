@@ -24,5 +24,3 @@ jobs:
 
     - name: Run script
       run: python main.py
-      env:
-        NUM_ACCOUNTS: ${{ github.event.inputs.num_accounts }}
