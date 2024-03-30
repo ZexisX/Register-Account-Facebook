@@ -1,4 +1,4 @@
-name: Register Facebook Accounts
+name: Register Facebook AccountsS
 
 on:
   push:
@@ -22,5 +22,5 @@ jobs:
         pip install requests
         pip install Faker
 
-    - name: Run script
+    - name: Run scriptT
       run: python main.py
