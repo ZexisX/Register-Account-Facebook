@@ -4,7 +4,6 @@ import string
 import json
 import hashlib
 from faker import Faker
-import os
 
 def generate_random_string(length):
     letters_and_digits = string.ascii_letters + string.digits
@@ -100,16 +99,7 @@ def _call(url, params, post=True):
     return response.json()
 
 if __name__ == "__main__":
-    num_accounts = int(os.getenv("NUM_ACCOUNTS", default=100000))
-    print("\033[95m██╗  ██╗███████╗██╗     ██╗      ██████╗  ██████╗ ██╗  ██╗\033[0m")
-    print("\033[95m██║  ██║██╔════╝██║     ██║     ██╔═══██╗██╔═══██╗╚██╗██╔╝\033[0m")
-    print("\033[95m███████║█████╗  ██║     ██║     ██║   ██║██║   ██║ ╚███╔╝ \033[0m")
-    print("\033[95m██╔══██║██╔══╝  ██║     ██║     ██║   ██║██║   ██║ ██╔██╗ \033[0m")
-    print("\033[95m██║  ██║███████╗███████╗███████╗╚██████╔╝╚██████╔╝██╔╝ ██╗\033[0m")
-    print("\033[95m╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝\033[0m")
-    print("\033[95mBắt đầu đăng ký tài khoản...\033[0m")
-    while num_accounts != 0:
+    for i in range(1, 100001):  # Tạo từ tài khoản thứ 1 đến tài khoản thứ 100000
         email, password, first_name, last_name, birthday = create_mail_tm_account()
         if email and password and first_name and last_name and birthday:
             register_facebook_account(email, password, first_name, last_name, birthday)
-            num_accounts -= 1
