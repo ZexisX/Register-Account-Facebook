@@ -1,0 +1,28 @@
+name: Register Facebook Accounts
+
+on:
+  push:
+    branches:
+      - main  # Thay đổi tên nhánh nếu cần
+
+jobs:
+  register_accounts:
+    runs-on: ubuntu-latest  # Chạy trên hệ điều hành Ubuntu
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'  # Sử dụng phiên bản Python 3.x
+
+    - name: Install dependencies
+      run: |
+        pip install requests
+        pip install Faker
+
+    - name: Run script
+      run: python main.py  # Thay đổi đường dẫn đến tệp mã của bạn
+      env:
+        NUM_ACCOUNTS: 5  # Số lượng tài khoản bạn muốn đăng ký
