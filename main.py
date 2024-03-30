@@ -82,7 +82,8 @@ def register_facebook_account(email, password, first_name, last_name, birthday):
 
     reg = _call(api_url, req)
     # Lưu kết quả dưới dạng JSON
-    with open(f"FB_{email}.json", "w") as file:
+    file_name = email.replace('@', '_').replace('.', '_')  # Thay thế "@" và "." bằng "_"
+    with open(f"FB_{file_name}.json", "w") as file:
         json.dump(reg, file, indent=4)
     print("\033[96mĐăng ký Facebook thành công:\033[0m")
     print(f"Email: {email}")
@@ -99,7 +100,7 @@ def _call(url, params, post=True):
     return response.json()
 
 if __name__ == "__main__":
-    num_accounts = int(os.getenv("NUM_ACCOUNTS", default=-1))
+    num_accounts = int(os.getenv("NUM_ACCOUNTS", default=100000))
     print("\033[95m██╗  ██╗███████╗██╗     ██╗      ██████╗  ██████╗ ██╗  ██╗\033[0m")
     print("\033[95m██║  ██║██╔════╝██║     ██║     ██╔═══██╗██╔═══██╗╚██╗██╔╝\033[0m")
     print("\033[95m███████║█████╗  ██║     ██║     ██║   ██║██║   ██║ ╚███╔╝ \033[0m")
